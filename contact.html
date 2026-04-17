@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Liên Hệ — Luminos Tech</title>
+  <meta name="description" content="Liên hệ với Luminos Tech — startup công nghệ từ sinh viên Đại học Tôn Đức Thắng. Chúng tôi sẵn sàng hỗ trợ dự án của bạn." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="contact.css" />
+</head>
+
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav id="navbar" class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">Luminos Tech</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#value-prop">Về Chúng Tôi</a></li>
+        <li><a href="index.html#outcomes">Dịch Vụ</a></li>
+        <li><a href="index.html#narrative">Câu Chuyện</a></li>
+      </ul>
+      <a href="contact.html" class="btn-cta-green active" id="navCta">Contact <span class="arrow">↗</span></a>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== CONTACT HERO ===== -->
+  <section class="contact-hero">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Left — Info -->
+        <div class="contact-info">
+          <span class="tag-label">Liên Hệ Với Chúng Tôi</span>
+          <h1 class="contact-heading">Bạn có dự án cần <span class="accent">triển khai?</span></h1>
+          <p class="contact-sub">Điền form bên dưới và đội ngũ Luminos Tech sẽ liên hệ lại trong vòng 24 giờ. Chúng tôi luôn sẵn sàng lắng nghe ý tưởng của bạn.</p>
+
+          <div class="contact-details">
+            <div class="contact-detail-item">
+              <div class="detail-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <polyline points="22,6 12,13 2,6" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Email liên hệ</strong>
+                <p>contact@luminostech.tech</p>
+              </div>
+            </div>
+            <div class="contact-detail-item">
+              <div class="detail-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="#dc2626" stroke-width="2"/>
+                  <circle cx="12" cy="10" r="3" stroke="#dc2626" stroke-width="2"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Địa chỉ</strong>
+                <p>Đại học Tôn Đức Thắng, TP. Hồ Chí Minh</p>
+              </div>
+            </div>
+            <div class="contact-detail-item">
+              <div class="detail-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="10" stroke="#dc2626" stroke-width="2"/>
+                  <polyline points="12 6 12 12 16 14" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Thời gian phản hồi</strong>
+                <p>Trong vòng 24 giờ, thường nhanh hơn</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right — Form -->
+        <div class="contact-form-wrapper">
+          <form id="contactForm" class="contact-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">Họ <span class="required">*</span></label>
+                <input type="text" id="firstName" name="firstName" placeholder="Nguyễn" required />
+              </div>
+              <div class="form-group">
+                <label for="lastName">Tên <span class="required">*</span></label>
+                <input type="text" id="lastName" name="lastName" placeholder="Văn A" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email <span class="required">*</span></label>
+              <input type="email" id="email" name="email" placeholder="john@company.com" required />
+            </div>
+            <div class="form-group">
+              <label for="company">Công ty / Tổ chức</label>
+              <input type="text" id="company" name="company" placeholder="Acme Inc." />
+            </div>
+            <div class="form-group">
+              <label for="role">Bạn cần dịch vụ gì?</label>
+              <select id="role" name="role">
+                <option value="" disabled selected>Chọn dịch vụ quan tâm</option>
+                <option value="web">Website / Web App</option>
+                <option value="mobile">Ứng dụng Mobile</option>
+                <option value="iot">IoT / Hệ thống nhúng</option>
+                <option value="ai">AI / Machine Learning</option>
+                <option value="other">Khác</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Mô tả dự án của bạn <span class="required">*</span></label>
+              <textarea id="message" name="message" rows="5" placeholder="Hãy cho chúng tôi biết về dự án, timeline và mong muốn của bạn..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary submit-btn" id="submitBtn">
+              Gửi Tin Nhắn <span class="arrow">↗</span>
+            </button>
+            <p class="form-note">Chúng tôi cam kết bảo mật thông tin của bạn.</p>
+          </form>
+
+          <!-- Success State -->
+          <div id="successMessage" class="success-message" style="display:none;">
+            <div class="success-icon">
+              <svg width="56" height="56" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="#22c55e" stroke-width="2"/>
+                <polyline points="8 12 11 15 16 9" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Gửi thành công!</h3>
+            <p>Cảm ơn bạn đã liên hệ. Đội ngũ Luminos Tech sẽ phản hồi trong vòng 24 giờ.</p>
+            <button class="btn-primary" onclick="resetForm()">Gửi tin nhắn khác</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="site-footer" class="site-footer">
+    <div class="container footer-inner">
+      <span class="footer-copy">&copy; 2026 Luminos Tech. All rights reserved. &nbsp;•&nbsp; TDTU</span>
+      <ul class="footer-links">
+        <li><a href="index.html#value-prop">Về Chúng Tôi</a></li>
+        <li><a href="index.html#outcomes">Dịch Vụ</a></li>
+        <li><a href="index.html#narrative">Câu Chuyện</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.getElementById('navLinks');
+    mobileToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    // Form handling
+    const form = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      // Basic validation
+      const firstName = document.getElementById('firstName').value.trim();
+      const lastName = document.getElementById('lastName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!firstName || !lastName || !email || !message) {
+        // Highlight empty required fields
+        form.querySelectorAll('[required]').forEach(input => {
+          if (!input.value.trim()) {
+            input.classList.add('error');
+            input.addEventListener('input', () => input.classList.remove('error'), { once: true });
+          }
+        });
+        return;
+      }
+
+      // Simulate submit
+      submitBtn.textContent = 'Đang gửi...';
+      submitBtn.disabled = true;
+
+      setTimeout(() => {
+        form.style.display = 'none';
+        successMessage.style.display = 'flex';
+      }, 1200);
+    });
+
+    function resetForm() {
+      form.reset();
+      form.style.display = 'flex';
+      successMessage.style.display = 'none';
+      submitBtn.innerHTML = 'Gửi Tin Nhắn <span class="arrow">↗</span>';
+      submitBtn.disabled = false;
+    }
+  </script>
+</body>
+
+</html>
