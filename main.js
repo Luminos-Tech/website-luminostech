@@ -19,35 +19,49 @@ navLinks.querySelectorAll('a').forEach(link => {
   });
 });
 
-// Scroll reveal animation
-const revealElements = document.querySelectorAll(
-  '.card, .stat-card, .process-step, .case-card, .product-card, .vp-left, .vp-right, .hero-heading, .hero-sub, .hero-buttons, .section-heading, .callout-line'
-);
+// Scroll reveal — staggered animation
+const revealMap = [
+  { sel: '.tag-label, .section-label', cls: 'reveal', delay: 0 },
+  { sel: '.hero-heading, .hero-sub, .hero-buttons, .ticker-wrap', cls: 'reveal', delay: 0 },
+  { sel: '.vp-left, .vp-right', cls: 'reveal', delay: 0 },
+  { sel: '.vp-bullets li', cls: 'reveal', delay: 80 },
+  { sel: '.card', cls: 'reveal', delay: 80 },
+  { sel: '.product-card', cls: 'reveal', delay: 100 },
+  { sel: '.stat-card', cls: 'reveal', delay: 80 },
+  { sel: '.process-step', cls: 'reveal', delay: 100 },
+  { sel: '.case-card', cls: 'reveal', delay: 60 },
+  { sel: '.section-heading, .callout-line', cls: 'reveal', delay: 0 },
+  { sel: '.footer-cta .big-heading, .footer-cta .footer-cta-sub, .footer-cta .btn-primary', cls: 'reveal', delay: 0 },
+];
 
-revealElements.forEach(el => el.classList.add('reveal'));
-
-const revealObserver = new IntersectionObserver((entries) => {
+const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
+      observer.unobserve(entry.target);
     }
   });
 }, {
-  threshold: 0.12,
-  rootMargin: '0px 0px -40px 0px'
+  threshold: 0.1,
+  rootMargin: '0px 0px -48px 0px'
 });
 
-revealElements.forEach(el => revealObserver.observe(el));
+revealMap.forEach(({ sel, cls, delay }) => {
+  document.querySelectorAll(sel).forEach((el, i) => {
+    el.classList.add(cls);
+    if (delay > 0) {
+      el.style.transitionDelay = `${i * delay}ms`;
+    }
+    observer.observe(el);
+  });
+});
 
-// Navbar shadow on scroll
+// Navbar — use class toggle
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 60) {
-    navbar.style.background = 'rgba(255,255,255,0.95)';
-    navbar.style.boxShadow = '0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06)';
+  if (window.scrollY > 50) {
+    navbar.classList.add('scrolled');
   } else {
-    navbar.style.background = 'rgba(255,255,255,0.88)';
-    navbar.style.boxShadow = 'none';
+    navbar.classList.remove('scrolled');
   }
-});
+}, { passive: true });

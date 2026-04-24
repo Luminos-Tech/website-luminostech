@@ -38,7 +38,7 @@
 
         <!-- Left — Info -->
         <div class="contact-info">
-          <span class="tag-label">Liên Hệ Với Chúng Tôi</span>
+          <span class="tag-label"><span class="tag-label-dot"></span>Liên Hệ Với Chúng Tôi</span>
           <h1 class="contact-heading">Bạn có dự án cần <span class="accent">triển khai?</span></h1>
           <p class="contact-sub">Điền form bên dưới và đội ngũ Luminos Tech sẽ liên hệ lại trong vòng 24 giờ. Chúng tôi luôn sẵn sàng lắng nghe ý tưởng của bạn.</p>
 
@@ -84,6 +84,7 @@
 
         <!-- Right — Form -->
         <div class="contact-form-wrapper">
+          <h3 class="form-heading">Gửi tin nhắn cho chúng tôi</h3>
           <form id="contactForm" class="contact-form" novalidate>
             <div class="form-row">
               <div class="form-group">
@@ -163,22 +164,27 @@
       navLinks.classList.toggle('open');
     });
 
+    // Telegram Bot Config
+    const BOT_TOKEN = '8631267473:AAEkIySbDiIjjXzGeEXGaNytTAJrdAeMYjk';
+    const CHAT_ID = '7352518467';
+
     // Form handling
     const form = document.getElementById('contactForm');
     const successMessage = document.getElementById('successMessage');
     const submitBtn = document.getElementById('submitBtn');
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       // Basic validation
       const firstName = document.getElementById('firstName').value.trim();
       const lastName = document.getElementById('lastName').value.trim();
       const email = document.getElementById('email').value.trim();
+      const company = document.getElementById('company').value.trim();
+      const role = document.getElementById('role').value;
       const message = document.getElementById('message').value.trim();
 
       if (!firstName || !lastName || !email || !message) {
-        // Highlight empty required fields
         form.querySelectorAll('[required]').forEach(input => {
           if (!input.value.trim()) {
             input.classList.add('error');
@@ -188,14 +194,44 @@
         return;
       }
 
-      // Simulate submit
+      // Disable button & show loading
       submitBtn.textContent = 'Đang gửi...';
       submitBtn.disabled = true;
 
-      setTimeout(() => {
-        form.style.display = 'none';
-        successMessage.style.display = 'flex';
-      }, 1200);
+      // Build Telegram message
+      const now = new Date().toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' });
+      const text = `📩 *LIÊN HỆ MỚI TỪ WEBSITE*\n\n` +
+        `👤 *Họ tên:* ${firstName} ${lastName}\n` +
+        `📧 *Email:* ${email}\n` +
+        `🏢 *Công ty:* ${company || 'Không có'}\n` +
+        `🔧 *Dịch vụ:* ${role || 'Chưa chọn'}\n` +
+        `📝 *Nội dung:*\n${message}\n\n` +
+        `🕐 *Thời gian:* ${now}`;
+
+      try {
+        const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: CHAT_ID,
+            text: text,
+            parse_mode: 'Markdown'
+          })
+        });
+
+        const data = await res.json();
+
+        if (data.ok) {
+          form.style.display = 'none';
+          successMessage.style.display = 'flex';
+        } else {
+          throw new Error('Telegram API error');
+        }
+      } catch (err) {
+        alert('Gửi tin nhắn thất bại. Vui lòng thử lại hoặc liên hệ qua email.');
+        submitBtn.innerHTML = 'Gửi Tin Nhắn <span class="arrow">↗</span>';
+        submitBtn.disabled = false;
+      }
     });
 
     function resetForm() {

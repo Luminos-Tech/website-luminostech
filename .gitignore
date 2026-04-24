@@ -1,0 +1,12 @@
+# Environment variables (chứa token bí mật)
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
