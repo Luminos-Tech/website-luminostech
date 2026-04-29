@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Liên Hệ — Luminos Tech</title>
-  <meta name="description" content="Liên hệ với Luminos Tech — startup công nghệ từ sinh viên Đại học Tôn Đức Thắng. Chúng tôi sẵn sàng hỗ trợ dự án của bạn." />
+  <title>Liên hệ — Luminos Tech</title>
+  <meta name="description" content="Liên hệ với nhóm Luminos Tech về dự án LumoHub. Hợp tác triển khai, thử nghiệm thiết bị hoặc kết nối đối tác bảo hiểm và chăm sóc sức khỏe." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -20,11 +20,13 @@
     <div class="nav-inner">
       <a href="index.html" class="logo">Luminos Tech</a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="index.html#value-prop">Về Chúng Tôi</a></li>
-        <li><a href="index.html#outcomes">Dịch Vụ</a></li>
-        <li><a href="index.html#narrative">Câu Chuyện</a></li>
+        <li><a href="index.html#lumohub-intro">Về LumoHub</a></li>
+        <li><a href="index.html#problem">Vấn Đề</a></li>
+        <li><a href="index.html#solution">Giải Pháp</a></li>
+        <li><a href="index.html#values">Giá Trị</a></li>
+        <li><a href="lumohub.html">Sản Phẩm</a></li>
       </ul>
-      <a href="contact.html" class="btn-cta-green active" id="navCta">Contact <span class="arrow">↗</span></a>
+      <a href="contact.html" class="btn-cta-green" id="navCta">Contact <span class="arrow">↗</span></a>
       <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
@@ -39,8 +41,8 @@
         <!-- Left — Info -->
         <div class="contact-info">
           <span class="tag-label"><span class="tag-label-dot"></span>Liên Hệ Với Chúng Tôi</span>
-          <h1 class="contact-heading">Bạn có dự án cần <span class="accent">triển khai?</span></h1>
-          <p class="contact-sub">Điền form bên dưới và đội ngũ Luminos Tech sẽ liên hệ lại trong vòng 24 giờ. Chúng tôi luôn sẵn sàng lắng nghe ý tưởng của bạn.</p>
+          <h1 class="contact-heading">Liên hệ <span class="accent">Luminos Tech.</span></h1>
+          <p class="contact-sub">Nếu bạn quan tâm đến LumoHub, muốn thử nghiệm thiết bị hoặc trao đổi về hợp tác trong lĩnh vực chăm sóc người cao tuổi, bảo hiểm và công nghệ an sinh, vui lòng để lại thông tin bên dưới.</p>
 
           <div class="contact-details">
             <div class="contact-detail-item">
@@ -76,7 +78,7 @@
               </div>
               <div>
                 <strong>Thời gian phản hồi</strong>
-                <p>Trong vòng 24 giờ, thường nhanh hơn</p>
+                <p>Trong vòng 24-48 giờ</p>
               </div>
             </div>
           </div>
@@ -84,7 +86,7 @@
 
         <!-- Right — Form -->
         <div class="contact-form-wrapper">
-          <h3 class="form-heading">Gửi tin nhắn cho chúng tôi</h3>
+          <h3 class="form-heading">Gửi thông tin liên hệ</h3>
           <form id="contactForm" class="contact-form" novalidate>
             <div class="form-row">
               <div class="form-group">
@@ -107,17 +109,17 @@
             <div class="form-group">
               <label for="role">Bạn cần dịch vụ gì?</label>
               <select id="role" name="role">
-                <option value="" disabled selected>Chọn dịch vụ quan tâm</option>
-                <option value="web">Website / Web App</option>
-                <option value="mobile">Ứng dụng Mobile</option>
-                <option value="iot">IoT / Hệ thống nhúng</option>
-                <option value="ai">AI / Machine Learning</option>
+                <option value="" disabled selected>Chọn nhu cầu quan tâm</option>
+                <option value="product">Quan tâm sản phẩm</option>
+                <option value="insurance">Hợp tác bảo hiểm/chăm sóc sức khỏe</option>
+                <option value="testing">Thử nghiệm thiết bị</option>
+                <option value="academic">Trao đổi học thuật/cuộc thi</option>
                 <option value="other">Khác</option>
               </select>
             </div>
             <div class="form-group">
-              <label for="message">Mô tả dự án của bạn <span class="required">*</span></label>
-              <textarea id="message" name="message" rows="5" placeholder="Hãy cho chúng tôi biết về dự án, timeline và mong muốn của bạn..." required></textarea>
+              <label for="message">Nội dung <span class="required">*</span></label>
+              <textarea id="message" name="message" rows="5" placeholder="Hãy cho chúng tôi biết nhu cầu của bạn..." required></textarea>
             </div>
             <button type="submit" class="btn-primary submit-btn" id="submitBtn">
               Gửi Tin Nhắn <span class="arrow">↗</span>
@@ -148,9 +150,11 @@
     <div class="container footer-inner">
       <span class="footer-copy">&copy; 2026 Luminos Tech. All rights reserved. &nbsp;•&nbsp; TDTU</span>
       <ul class="footer-links">
-        <li><a href="index.html#value-prop">Về Chúng Tôi</a></li>
-        <li><a href="index.html#outcomes">Dịch Vụ</a></li>
-        <li><a href="index.html#narrative">Câu Chuyện</a></li>
+        <li><a href="index.html#lumohub-intro">Về LumoHub</a></li>
+        <li><a href="index.html#problem">Vấn Đề</a></li>
+        <li><a href="index.html#solution">Giải Pháp</a></li>
+        <li><a href="index.html#values">Giá Trị</a></li>
+        <li><a href="lumohub.html">Sản Phẩm</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
@@ -204,7 +208,7 @@
         `👤 *Họ tên:* ${firstName} ${lastName}\n` +
         `📧 *Email:* ${email}\n` +
         `🏢 *Công ty:* ${company || 'Không có'}\n` +
-        `🔧 *Dịch vụ:* ${role || 'Chưa chọn'}\n` +
+        `📋 *Nhu cầu:* ${role || 'Chưa chọn'}\n` +
         `📝 *Nội dung:*\n${message}\n\n` +
         `🕐 *Thời gian:* ${now}`;
 
