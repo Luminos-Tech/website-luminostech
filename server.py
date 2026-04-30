@@ -1,21 +1,20 @@
 from flask import Flask, send_from_directory, abort
+from werkzeug.middleware.proxy_fix import ProxyFix
 import os
 
 app = Flask(__name__)
-PORT = 6002
+app.wsgi_app = ProxyFix(app.wsgi_app)
+PORT = int(os.environ.get('PORT', 6002))
 
 @app.route('/<path:page>')
 def serve_page(page):
-    # Remove .html if present and redirect
     if page.endswith('.html'):
         return '', 301
 
-    # Try to serve .html file
     html_file = f'{page}.html'
     if os.path.exists(html_file):
         return send_from_directory('.', html_file)
     
-    # Try index.html for root paths
     if page == '' or page == '/':
         if os.path.exists('index.html'):
             return send_from_directory('.', 'index.html')

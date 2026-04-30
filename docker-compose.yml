@@ -1,0 +1,7 @@
+services:
+  web:
+    build: .
+    container_name: luminostech-web
+    ports:
+      - "6002:6002"
+    restart: unless-stopped

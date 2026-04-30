@@ -1,17 +1,5 @@
-# Enable URL rewriting
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-
-    # Redirect .html requests to remove extension
-    RewriteCond %{THE_REQUEST} \s/([^.]+)\.html[?\s]
-    RewriteRule ^ %1 [R=301,L]
-
-    # Serve .html file internally
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME}.html -f
-    RewriteRule ^([^/]+)/?$ $1.html [L]
-</IfModule>
+# .htaccess - chỉ dùng khi deploy trên Apache
+# Nếu dùng Docker (Flask server), .htaccess không cần thiết
 
 # Disable directory listing
 Options -Indexes
