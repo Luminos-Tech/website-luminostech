@@ -165,13 +165,28 @@
   position: absolute;
   inset: 5%;
   border-radius: 50%;
-  border: 2px dashed rgba(220,38,38,0.15);
   animation: spin-slow 30s linear infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @keyframes spin-slow {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.showcase-device-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 72%;
+  height: 72%;
+  object-fit: contain;
+  border-radius: 50%;
+  filter: drop-shadow(0 8px 32px rgba(0,0,0,0.18));
 }
 
 .showcase-ring::before,
@@ -194,75 +209,6 @@
   bottom: -6px;
   left: 50%;
   transform: translateX(-50%);
-}
-
-.showcase-device {
-  position: absolute;
-  inset: 15%;
-  background: var(--bg-card);
-  border-radius: 24px;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-lg);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  padding: 24px;
-  overflow: hidden;
-}
-
-.showcase-device::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--accent));
-}
-
-.device-icon {
-  width: 72px;
-  height: 72px;
-  background: var(--accent-bg);
-  border-radius: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: device-breathe 4s ease-in-out infinite;
-}
-
-@keyframes device-breathe {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-
-.device-label {
-  font-size: 1.4rem;
-  font-weight: 900;
-  color: var(--text);
-  letter-spacing: -0.5px;
-}
-
-.device-status {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.78rem;
-  color: #16a34a;
-  font-weight: 600;
-}
-
-.status-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #22c55e;
-  animation: blink 2s ease-in-out infinite;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
 }
 
 /* Orbiting feature tags around device */
@@ -786,7 +732,9 @@
   transform: translateY(0);
 }
 
-/* ===== RESPONSIVE ===== */
+.showcase-mobile-tags {
+  display: none;
+}
 @media (max-width: 1024px) {
   .lumohub-hero-grid {
     grid-template-columns: 1fr;
@@ -834,36 +782,144 @@
   .lumohub-hero {
     padding-top: 110px;
     padding-bottom: 60px;
+    min-height: auto;
   }
 
-  .lumohub-hero-title {
-    font-size: 2.4rem;
-    letter-spacing: -1px;
+  .lumohub-hero-grid {
+    gap: 36px;
   }
 
-  .features-grid {
-    grid-template-columns: 1fr;
+  .product-showcase {
+    max-width: 280px;
+    aspect-ratio: 1;
   }
 
-  .how-grid {
-    grid-template-columns: 1fr;
+  .showcase-device-img {
+    width: 68%;
+    height: 68%;
+  }
+
+  .showcase-ring::before,
+  .showcase-ring::after {
+    width: 10px;
+    height: 10px;
+  }
+
+  .showcase-ring::before {
+    top: -5px;
+  }
+
+  .showcase-ring::after {
+    bottom: -5px;
   }
 
   .showcase-tags-orbit {
     display: none;
   }
 
+  .showcase-mobile-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 0 20px;
+  }
+
+  .mobile-tag {
+    background: var(--accent-bg);
+    border: 1px solid rgba(220,38,38,0.2);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .lumohub-features {
+    padding: 60px 0;
+  }
+
+  .lumohub-specs,
+  .lumohub-how {
+    padding: 60px 0;
+  }
+
+  .how-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .specs-layout {
+    gap: 40px;
+  }
+
   .cta-buttons {
     flex-direction: column;
+  }
+
+  .comparison-card {
+    padding: 20px 18px;
   }
 }
 
 @media (max-width: 480px) {
   .lumohub-hero-title {
     font-size: 2rem;
+    letter-spacing: -0.5px;
+  }
+
+  .lumohub-hero-sub {
+    font-size: 0.95rem;
   }
 
   .hero-price-value {
     font-size: 1.8rem;
+  }
+
+  .product-showcase {
+    max-width: 240px;
+  }
+
+  .lumohub-hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .lumohub-hero-actions .btn-primary,
+  .lumohub-hero-actions .btn-ghost {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .features-header {
+    margin-bottom: 36px;
+  }
+
+  .feature-card {
+    padding: 24px 20px;
+  }
+
+  .how-step-num {
+    width: 48px;
+    height: 48px;
+    font-size: 1rem;
+  }
+
+  .spec-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding: 12px 0;
+  }
+
+  .spec-row:hover {
+    padding-left: 8px;
+    padding-right: 8px;
+    margin: 0 -8px;
   }
 }
